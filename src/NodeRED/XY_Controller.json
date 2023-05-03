@@ -1,0 +1,406 @@
+[
+    {
+        "id": "192589d78ea9942d",
+        "type": "tab",
+        "label": "Control panel",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "16332113c7be818f",
+        "type": "mqtt out",
+        "z": "192589d78ea9942d",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6be8ec108bd19040",
+        "x": 1330,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "fd6c1481dca52865",
+        "type": "ui_slider",
+        "z": "192589d78ea9942d",
+        "name": "Speed",
+        "label": "Speed:",
+        "tooltip": "",
+        "group": "87da3e5f0e2d01a5",
+        "order": 15,
+        "width": "6",
+        "height": "2",
+        "passthru": true,
+        "outs": "end",
+        "topic": "VALUE",
+        "topicType": "str",
+        "min": "0",
+        "max": "80000",
+        "step": "500",
+        "className": "",
+        "x": 850,
+        "y": 400,
+        "wires": [
+            [
+                "b02dbb0449de0136"
+            ]
+        ]
+    },
+    {
+        "id": "b02dbb0449de0136",
+        "type": "function",
+        "z": "192589d78ea9942d",
+        "name": "",
+        "func": "var steps = flow.get('steps') || 0;\nsteps=msg.payload;\nflow.set('steps',steps);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1020,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15ea74a042d3aa67",
+        "type": "function",
+        "z": "192589d78ea9942d",
+        "name": "",
+        "func": "msg.payload = flow.get('steps') || 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 660,
+        "wires": [
+            [
+                "16332113c7be818f"
+            ]
+        ]
+    },
+    {
+        "id": "88a64b9e97783a51",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Dummy button",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 820,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47d221aad504a04b",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Up",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-arrow-up fa-4x",
+        "payload": "1000",
+        "payloadType": "str",
+        "topic": "/MCU/UP",
+        "topicType": "str",
+        "x": 850,
+        "y": 520,
+        "wires": [
+            [
+                "15ea74a042d3aa67"
+            ]
+        ]
+    },
+    {
+        "id": "b0db753fc2ccb84f",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Dummy button",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 820,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bfff4ad826d5b90",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Left",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-arrow-left fa-4x",
+        "payload": "1000",
+        "payloadType": "str",
+        "topic": "/MCU/LEFT",
+        "topicType": "str",
+        "x": 850,
+        "y": 640,
+        "wires": [
+            [
+                "15ea74a042d3aa67"
+            ]
+        ]
+    },
+    {
+        "id": "649d6f5e39653fe2",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Picture",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-camera fa-4x",
+        "payload": "picture",
+        "payloadType": "str",
+        "topic": "/MCU/ACTIONS",
+        "topicType": "str",
+        "x": 1140,
+        "y": 720,
+        "wires": [
+            [
+                "16332113c7be818f"
+            ]
+        ]
+    },
+    {
+        "id": "aae58bd9388d7f34",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Right",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-arrow-right fa-4x",
+        "payload": "1000",
+        "payloadType": "str",
+        "topic": "/MCU/RIGHT",
+        "topicType": "str",
+        "x": 850,
+        "y": 700,
+        "wires": [
+            [
+                "15ea74a042d3aa67"
+            ]
+        ]
+    },
+    {
+        "id": "c583b917e89f61c6",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Dummy button",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 820,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d76761d5156b0cfe",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Down",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-arrow-down fa-4x",
+        "payload": "1000",
+        "payloadType": "str",
+        "topic": "/MCU/DOWN",
+        "topicType": "str",
+        "x": 850,
+        "y": 820,
+        "wires": [
+            [
+                "15ea74a042d3aa67"
+            ]
+        ]
+    },
+    {
+        "id": "29152fa993ccf906",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Dummy button",
+        "group": "87da3e5f0e2d01a5",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 820,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bbf625a1c555bd60",
+        "type": "ui_button",
+        "z": "192589d78ea9942d",
+        "name": "Auto route",
+        "group": "87da3e5f0e2d01a5",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Auto route",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "auto",
+        "payloadType": "str",
+        "topic": "/MCU/ACTIONS",
+        "topicType": "str",
+        "x": 1130,
+        "y": 600,
+        "wires": [
+            [
+                "16332113c7be818f"
+            ]
+        ]
+    },
+    {
+        "id": "6be8ec108bd19040",
+        "type": "mqtt-broker",
+        "name": "Luyts broker",
+        "broker": "mqtt.luytsm.be",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "87da3e5f0e2d01a5",
+        "type": "ui_group",
+        "name": "Control panel",
+        "tab": "f44e1b4c62d5bfc2",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f44e1b4c62d5bfc2",
+        "type": "ui_tab",
+        "name": "Farmlab",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
